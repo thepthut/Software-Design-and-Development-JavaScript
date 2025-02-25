@@ -233,9 +233,25 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+// 1. คำนวณคะแนนเฉลี่ย
+
+let score1 = 85;
+let score2 = 92;
+let score3 = 78;
+let averageScore = (score1 + score2 + score3) / 3;
+console.log("คะแนนเฉลี่ย:", averageScore.toFixed(2));
+
+// 2. คำนวณราคารวม VAT
+
+let productName = "เสื้อยืด";
+let productPrice = 250;
+const VAT_RATE = 0.07;
+let priceWithVat = productPrice * (1 + VAT_RATE);
+console.log("ราคารวม VAT:", priceWithVat.toFixed(2), "บาท");
+
 ```
 [รูปผลการทดลองที่ 2.2]
+![Screenshot 2025-02-25 235241](https://github.com/user-attachments/assets/b35f8324-a656-46af-a409-a86ae39f6bde)
 
 ### 2.3 การควบคุมการทำงาน
 
