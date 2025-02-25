@@ -167,9 +167,21 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+    let studentId = "67030296";     
+    let studentName = "เทพทัต บัวเทศ"; 
+    let midtermScore = 75;         
+    let finalScore = 82;  
+
+const student = {
+    studentId: "67030296", 
+    name: "เทพทัต บัวเทศ",      
+    major: "ครุคอม", 
+    gpa: 2.95           
+};
 ```
 [รูปผลการทดลองที่ 2.1]
+
+![Screenshot 2025-02-25 234622](https://github.com/user-attachments/assets/fb0284ec-b57a-49e2-ad1c-0769d585e34f)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
