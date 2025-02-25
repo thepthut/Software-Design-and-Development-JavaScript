@@ -382,9 +382,108 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html>
+<head>
+    <title>แบบฝึกหัด JavaScript</title>
+    <style>
+        .container {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>ตรวจสอบเลขคู่/คี่</h2>
+        <label for="numberInput">ใส่ตัวเลข:</label>
+        <input type="number" id="numberInput">
+        <button onclick="checkEvenOdd()">ตรวจสอบ</button>
+        <p id="evenOddResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>สูตรคูณ</h2>
+        <label for="multiplierInput">ใส่แม่สูตรคูณ:</label>
+        <input type="number" id="multiplierInput" value="2">
+        <button onclick="showMultiplicationTable()">แสดงสูตรคูณ</button>
+        <p id="multiplicationResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>นับถอยหลัง</h2>
+        <label for="countdownInput">เริ่มนับถอยหลังจาก:</label>
+        <input type="number" id="countdownInput" value="10">
+        <button onclick="startCountdown()">เริ่มนับถอยหลัง</button>
+        <p id="countdownResult"></p>
+    </div>
+
+    <script>
+        // 1. ตรวจสอบเลขคู่/คี่
+        function checkEvenOdd() {
+            let number = parseInt(document.getElementById("numberInput").value);
+            let resultElement = document.getElementById("evenOddResult");
+
+            if (isNaN(number)) {
+                resultElement.textContent = "กรุณาใส่ตัวเลข";
+                return;
+            }
+
+            if (number % 2 === 0) {
+                resultElement.textContent = number + " เป็นเลขคู่";
+            } else {
+                resultElement.textContent = number + " เป็นเลขคี่";
+            }
+        }
+
+        // 2. แสดงสูตรคูณ
+        function showMultiplicationTable() {
+            let multiplier = parseInt(document.getElementById("multiplierInput").value);
+            let resultElement = document.getElementById("multiplicationResult");
+             if (isNaN(multiplier)) {
+                resultElement.textContent = "กรุณาใส่ตัวเลข";
+                return;
+            }
+
+            let table = "";
+            for (let i = 1; i <= 12; i++) {
+                table += multiplier + " x " + i + " = " + (multiplier * i) + "<br>";
+            }
+            resultElement.innerHTML = table; // ใช้ innerHTML เพราะมี <br>
+        }
+
+
+        // 3. นับถอยหลัง
+        function startCountdown() {
+            let start = parseInt(document.getElementById("countdownInput").value);
+            let resultElement = document.getElementById("countdownResult");
+
+            if (isNaN(start)) {
+                resultElement.textContent = "กรุณาใส่ตัวเลข";
+                return;
+            }
+
+            let countdownText = "";
+            for (let i = start; i >= 1; i--) {
+                countdownText += i + "<br>";  //ใช้ <br> เพื่อขึ้นบรรทัดใหม่
+            }
+            resultElement.innerHTML = countdownText;
+        }
+    </script>
+    <h1>ตรวจสอบช่วงวัย</h1>
+    <label for="ageInput">ใส่อายุ:</label>
+    <input type="number" id="ageInput">
+    <button onclick="checkAge()">ตรวจสอบ</button>
+    <p id="ageResult"></p>
+
+    <script src="script.js"></script> </body>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 2.3]
+![Screenshot 2025-02-26 000302](https://github.com/user-attachments/assets/a57eb685-e7e5-445d-8ba1-556d942da44a)
 
 ### 2.4 Functions และ Arrow Functions
 
