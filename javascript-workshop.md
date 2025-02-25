@@ -83,36 +83,35 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
-    <!-- Inline JavaScript -->
-    <button onclick="alert('นายเทพทัต บัวเทศ')">ปุ่มที่ 1</button>
-    <input type="text" id="myTextbox" placeholder="กรอกข้อความ">
-    <button onclick="displayMessage()">แสดงข้อความ</button>
-    <div id="output"></div>
+    <button onclick="alert('เทพทัต บัวเทศ');">ปุ่มที่ 1</button>
 
-    <!-- ทดสอบ Internal JavaScript -->
     <button id="btn2">ปุ่มที่ 2</button>
 
-    <!-- ทดสอบ External JavaScript -->
-    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+    <button id="btn3" onclick="hello3()">ปุ่มที่ 3</button> 
+    <input type="text" id="myTextbox" placeholder="กรอกข้อความ">
+    <button onclick="showMessage()">แสดงข้อความ</button>
+    <div id="output"></div>
 
-    <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
-            alert('19/02/2568');
+            const currentDate = new Date();
+            alert('วันที่ปัจจุบัน: ' + currentDate.toLocaleDateString());
         };
     </script>
 
-    <!-- External JavaScript -->
-  <!-- ต้องสร้างไฟล์ script.js มีโค้ดโปรแกรมในไฟล์ดังนี้
-   function hello3(){
-    alert('คลิกปุ่มที่ 3!');
-    }
- -->
     <script src="script.js"></script>
+
+    <script>
+        function showMessage() {
+            const message = document.getElementById('myTextbox').value;
+            document.getElementById('output').textContent = message;
+        }
+    </script>
 </body>
 </html>
 ```
-[รูปผลการทดลองที่ 1]
+![Screenshot 2025-02-25 221201](https://github.com/user-attachments/assets/16763330-7ee1-45b3-95e4-ba7252b57650)
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
