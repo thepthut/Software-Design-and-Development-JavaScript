@@ -595,9 +595,249 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ JavaScript Functions</title>
+    <style>
+        body {
+            font-family: 'Sarabun', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+        }
+        
+        .question {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        
+        .input-area {
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], 
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .code-display {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>แบบทดสอบ JavaScript Functions</h1>
+        
+        <!-- ข้อที่ 1: BMI Calculator -->
+        <div class="question">
+            <h2>1. คำนวณค่า BMI (ดัชนีมวลกาย)</h2>
+            <div class="input-area">
+                <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+                <input type="number" id="weight" placeholder="เช่น 70">
+                
+                <label for="height">ส่วนสูง (เมตร):</label>
+                <input type="number" id="height" step="0.01" placeholder="เช่น 1.75">
+                
+                <button onclick="calculateBMI()">คำนวณ BMI</button>
+                <div id="bmiResult" class="result"></div>
+            </div>
+            
+            <div class="code-display" id="bmiCode">
+// ฟังก์ชันคำนวณค่า BMI
+function calculateBMI(weight, height) {
+    // สูตร BMI = น้ำหนัก (kg) / (ส่วนสูง (m))^2
+    return weight / (height * height);
+}</div>
+        </div>
+        
+        <!-- ข้อที่ 2: Greeting by Age -->
+        <div class="question">
+            <h2>2. แสดงข้อความทักทายตามอายุ</h2>
+            <div class="input-area">
+                <label for="name">ชื่อ:</label>
+                <input type="text" id="name" placeholder="เช่น สมชาย">
+                
+                <label for="age">อายุ:</label>
+                <input type="number" id="age" placeholder="เช่น 25">
+                
+                <button onclick="greetPerson()">ทักทาย</button>
+                <div id="greetResult" class="result"></div>
+            </div>
+            
+            <div class="code-display" id="greetCode">
+// ฟังก์ชันทักทายตามอายุ
+function greetByAge(name, age) {
+    if (age < 12) {
+        return "สวัสดีน้อง " + name + " สบายดีไหมครับ/คะ";
+    } else if (age < 20) {
+        return "สวัสดีคุณ " + name + " ยินดีที่ได้รู้จักนะ";
+    } else if (age < 60) {
+        return "สวัสดีคุณ " + name + " ยินดีต้อนรับครับ/ค่ะ";
+    } else {
+        return "สวัสดีคุณลุง/คุณป้า " + name + " สุขภาพแข็งแรงนะครับ/คะ";
+    }
+}</div>
+        </div>
+        
+        <!-- ข้อที่ 3: Password Checker -->
+        <div class="question">
+            <h2>3. ตรวจสอบรหัสผ่าน</h2>
+            <div class="input-area">
+                <label for="password">รหัสผ่าน:</label>
+                <input type="text" id="password" placeholder="กรอกรหัสผ่าน">
+                
+                <button onclick="checkPassword()">ตรวจสอบ</button>
+                <div id="passwordResult" class="result"></div>
+            </div>
+            
+            <div class="code-display" id="passwordCode">
+// ฟังก์ชันตรวจสอบความยาวรหัสผ่าน
+function checkPasswordLength(password) {
+    return password.length > 8;
+}</div>
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันคำนวณค่า BMI
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const resultDiv = document.getElementById('bmiResult');
+            
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'กรุณากรอกน้ำหนักและส่วนสูงให้ถูกต้อง';
+                resultDiv.style.backgroundColor = '#ffdddd';
+                return;
+            }
+            
+            const bmi = weight / (height * height);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+            resultDiv.style.backgroundColor = '#e8f4fc';
+        }
+        
+        // ฟังก์ชันทักทายตามอายุ
+        function greetPerson() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const resultDiv = document.getElementById('greetResult');
+            
+            if (!name || isNaN(age) || age < 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'กรุณากรอกชื่อและอายุให้ถูกต้อง';
+                resultDiv.style.backgroundColor = '#ffdddd';
+                return;
+            }
+            
+            let greeting = '';
+            if (age < 12) {
+                greeting = `สวัสดีน้อง ${name} สบายดีไหมครับ/คะ`;
+            } else if (age < 20) {
+                greeting = `สวัสดีคุณ ${name} ยินดีที่ได้รู้จักนะ`;
+            } else if (age < 60) {
+                greeting = `สวัสดีคุณ ${name} ยินดีต้อนรับครับ/ค่ะ`;
+            } else {
+                greeting = `สวัสดีคุณลุง/คุณป้า ${name} สุขภาพแข็งแรงนะครับ/คะ`;
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = greeting;
+            resultDiv.style.backgroundColor = '#e8f4fc';
+        }
+        
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('passwordResult');
+            
+            if (!password) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'กรุณากรอกรหัสผ่าน';
+                resultDiv.style.backgroundColor = '#ffdddd';
+                return;
+            }
+            
+            const isValid = password.length > 8;
+            
+            resultDiv.style.display = 'block';
+            if (isValid) {
+                resultDiv.textContent = 'รหัสผ่านผ่านเกณฑ์ (มีความยาวมากกว่า 8 ตัวอักษร)';
+                resultDiv.style.backgroundColor = '#dff0d8';
+            } else {
+                resultDiv.textContent = 'รหัสผ่านไม่ผ่านเกณฑ์ (ต้องมีความยาวมากกว่า 8 ตัวอักษร)';
+                resultDiv.style.backgroundColor = '#ffdddd';
+            }
+        }
+    </script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 2.4.1]
+![Screenshot 2025-03-12 164943](https://github.com/user-attachments/assets/29f2f0d4-64ff-48db-abe1-298275b96a74)
+![Screenshot 2025-03-12 164846](https://github.com/user-attachments/assets/f1f34b34-d3be-4671-a4db-40fcb3c1ef95)
+![Screenshot 2025-03-12 164917](https://github.com/user-attachments/assets/239df814-4118-47f8-b63f-aaaca4875115)
+
 
 
 
