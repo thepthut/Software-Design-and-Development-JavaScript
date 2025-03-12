@@ -1187,9 +1187,33 @@ function checkPasswordLength(password) {
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+const calculateBMI = () => {
+  const weight = parseFloat(document.getElementById("weight").value);
+  const height = parseFloat(document.getElementById("height").value) / 100; // แปลงเป็นเมตร
+  
+  if (isNaN(weight) || isNaN(height) || height <= 0) {
+      document.getElementById("result").innerText = "กรุณากรอกข้อมูลให้ถูกต้อง";
+      return;
+  }
+  
+  const bmi = weight / (height * height);
+  let status = "";
+  
+  if (bmi < 18.5) {
+      status = "ผอม";
+  } else if (bmi >= 18.5 && bmi < 25) {
+      status = "สมส่วน";
+  } else {
+      status = "อ้วน";
+  }
+  
+  document.getElementById("result").innerText = `BMI ของคุณคือ ${bmi.toFixed(2)} (${status})`;
+};
+
 ```
 [รูปผลการทดลองที่ 3.1]
+![Screenshot 2025-03-12 170108](https://github.com/user-attachments/assets/fde1a600-0619-4804-850d-643336881e27)
+
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
